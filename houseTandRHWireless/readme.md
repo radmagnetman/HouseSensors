@@ -1,3 +1,5 @@
+![Fritzing wiring diagram](https://raw.githubusercontent.com/radmagnetman/HouseSensors/master/houseTandRHWireless/houseTandRHWireless.png)
+
 This code was written for the following hardware
 
 * HUZZAH ESP8266 - https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/overview
