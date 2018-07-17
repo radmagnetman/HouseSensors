@@ -488,8 +488,7 @@ void processCommand()
     EEPROM.begin(eepromSize);
     Serial.print(F("Updating UDP port: ")); Serial.println(commandData);
     myPortNum = atoi(commandData);
-    Serial.println(myPortNum);
-
+    
     EEPROM.write(eepromAddrPortNum, highByte(myPortNum));
     EEPROM.write(eepromAddrPortNum + 1, lowByte(myPortNum));
 
