@@ -12,15 +12,11 @@ For programming ESP8266
 
 * USB to TTL Serial Cable - https://www.adafruit.com/product/954
 
-``Wiring for ESP8266``
+Wiring for ESP8266
 
-``Serial Cable | ESP8266``
-
-``BLACK | GND (pin 6)``
-
-``  RED | V+  (pin 4)``
-  
-``GREEN | RX (pin 3)``
-
-``WHITE | TX (pin 2)``
-
+| Serial Cable | ESP8266 |
+| ------------- | ------------- |
+| BLACK | GND (pin 6)  |
+|RED | V+  (pin 4)|
+|GREEN | RX (pin 3)|
+|WHITE | TX (pin 2)|
