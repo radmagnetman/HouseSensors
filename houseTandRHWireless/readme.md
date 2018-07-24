@@ -1,3 +1,5 @@
+![Fritzing wiring diagram](https://raw.githubusercontent.com/radmagnetman/HouseSensors/master/houseTandRHWireless/houseTandRHWireless.png)
+
 This code was written for the following hardware
 
 * HUZZAH ESP8266 - https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/overview
@@ -12,13 +14,9 @@ For programming ESP8266
 
 Wiring for ESP8266
 
-Serial Cable | ESP8266
-
-BLACK | GND (pin 6)
-
-  RED | V+  (pin 4)
-  
-GREEN | RX (pin 3)
-
-WHITE | TX (pin 2)
-
+| Serial Cable | ESP8266 |
+| ------------- | ------------- |
+| BLACK | GND (pin 6)  |
+|RED | V+  (pin 4)|
+|GREEN | RX (pin 3)|
+|WHITE | TX (pin 2)|
