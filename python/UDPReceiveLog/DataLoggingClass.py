@@ -1,8 +1,10 @@
 class DataLogger:
     numSensors = 0
 
-    def __init__(self,name,dataType,dataVal):
+    def __init__(self,name,boardCode,locationCode,dataType,dataVal):
         self.name = name
+        self.boardCode = boardCode
+        self.locationCode = locationCode
         self.dataType = dataType
         self.dataVal = []
         self.dataVal.append(float(dataVal))
