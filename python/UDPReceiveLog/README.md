@@ -7,3 +7,7 @@ To do:
 * Implement a settings file that includes things like where to store the log.
 
 * Visualization system
+
+To make the python script run as a service, I followed directions on this site:
+
+http://blog.scphillips.com/posts/2013/07/getting-a-python-script-to-run-in-the-background-as-a-service-on-boot/
