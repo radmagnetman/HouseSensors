@@ -1,13 +1,24 @@
+#!/usr/bin/env python
+# Setup
+
 import socket
 import datetime
 import operator
 import os
 from DataLoggingClass import DataLogger
 
-os.system('clear')
+file = open("/home/pi/Documents/python/UDPReceiveLog/didThisWork.txt","a")
+file.write("Hello?")
+file.close()
 
-print("Testing UDP writing.")
+#import os.path
+#os.path.isfile("dataLogging")
 
+#os.system('clear')
+
+print("Logging service")
+
+# Init variables and UDP socket
 sensorList = []
 
 UDP_IP = "" #Which is my local ip for my computer
@@ -16,16 +27,15 @@ sock = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
 sock.bind((UDP_IP, UDP_PORT))
 
-#while True:
-# Check UDP stack
-c = 100
+# When the second clock rolls back to zero, write
+# data to file.
 lastLoggedSec = -1
-while c> 0:
+while True:
+    # Get UDP data
     data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
     now = datetime.datetime.now()
-    #print (now.strftime("%H:%M:%S ")),
-    #print (data)
 
+    # Parse data
     dataStrList = data.split()
     timeStampStr = now.strftime("%H:%M:%S ")
     currentSecond = now.second
@@ -35,25 +45,26 @@ while c> 0:
     sensorDataValue = dataStrList[3]
     uniqueID = dataStrList[0]+dataStrList[1]+dataStrList[2]
 
+    # Check to see if the last sensor read is in the current list
     found = False
     for sensors in sensorList:
         if uniqueID in sensors.name:
             found = True
             sensors.addDataValue(sensorDataValue)
 
+    # If sensor isn't in list, add it
     if found == False:
         sensorList.append(DataLogger(uniqueID,boardCode,locationCode,sensorDataType,sensorDataValue))
 
+    # If minute has passed, write data to file and flush sensor list
     if currentSecond < lastLoggedSec:
         print("Writing data to file")
         for sensors in sensorList:
-            #print("At {}:{} sensor {} has an average {} of {}".format(now.hour, \
-            #now.minute,sensors.name,sensors.dataType,sensors.returnAverageData()))
             minSinceMidnight = now.hour*60+now.minute
             print("{},{},{},{},{:.2f}".format(minSinceMidnight, \
             sensors.boardCode,sensors.locationCode,sensors.dataType,\
             sensors.returnAverageData()))
-            file = open("testfile.txt","a")
+            file = open("/home/pi/Documents/python/UDPReceiveLog/testfileservice.txt","a")
             file.write("{},{},{},{},{:.2f}\n".format(minSinceMidnight, \
             sensors.boardCode,sensors.locationCode,sensors.dataType,\
             sensors.returnAverageData()))
